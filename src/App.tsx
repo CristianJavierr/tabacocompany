@@ -800,8 +800,9 @@ export default function App() {
         },
       });
 
-      // Experience animation — desktop only (pinning blocks touch scroll)
+      // Experience animation
       if (!isMobile) {
+        // Desktop: pinned scroll-driven animation
         const experienceTl = gsap.timeline({
           scrollTrigger: {
             trigger: '.experience',
@@ -893,6 +894,55 @@ export default function App() {
           duration: 1.2,
           ease: 'none',
         });
+      } else {
+        // Mobile: scroll-driven zoom without pinning
+        const mobileExpTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: '.experience',
+            start: 'top 80%',
+            end: 'bottom 20%',
+            scrub: 0.3,
+            invalidateOnRefresh: true,
+          }
+        });
+
+        mobileExpTl.fromTo('.experience-frame', {
+          scale: 0.85,
+          opacity: 0.7,
+        }, {
+          scale: 1,
+          opacity: 1,
+          duration: 1,
+          ease: 'power2.out',
+        }, 0);
+
+        mobileExpTl.fromTo('.experience-img', {
+          scale: 1.3,
+        }, {
+          scale: 1,
+          duration: 1,
+          ease: 'power2.out',
+        }, 0);
+
+        mobileExpTl.fromTo('.exp-header--1', {
+          y: 30,
+          opacity: 0,
+        }, {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: 'power2.out',
+        }, 0);
+
+        mobileExpTl.fromTo('.exp-header--2', {
+          y: 30,
+          opacity: 0,
+        }, {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: 'power2.out',
+        }, 0.2);
       }
 
       // ========== FOOTER ANIMATIONS ==========
