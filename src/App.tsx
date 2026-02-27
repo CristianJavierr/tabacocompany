@@ -491,10 +491,51 @@ export default function App() {
         }
       }
 
-      // Observer for Slider (desktop only — touch devices use native scroll)
+      // Observer for Slider
       let sliderObserver: globalThis.Observer | null = null;
 
-      if (!isMobile) {
+      if (isMobile) {
+        // Mobile: touch swipes trigger slide transitions without blocking native scroll
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let sliderActive = false;
+
+        const collectionEl = document.querySelector('.collection');
+        if (collectionEl) {
+          collectionEl.addEventListener('touchstart', (e) => {
+            const touch = (e as TouchEvent).touches[0];
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+          }, { passive: true });
+
+          collectionEl.addEventListener('touchend', (e) => {
+            if (!sliderActive || playAnimation) return;
+            const touch = (e as TouchEvent).changedTouches[0];
+            const deltaX = touch.clientX - touchStartX;
+            const deltaY = touch.clientY - touchStartY;
+
+            // Only trigger on horizontal swipes (wider than tall, and minimum 50px)
+            if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+              if (deltaX < 0 && activeIndexSlider > 0) {
+                nextSlide();
+              } else if (deltaX > 0 && activeIndexSlider < document.querySelectorAll('.slider-img').length - 1) {
+                prevSlide();
+              }
+            }
+          }, { passive: true });
+        }
+
+        // Use ScrollTrigger to know when collection is in view
+        ScrollTrigger.create({
+          trigger: '.collection',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          onEnter: () => { sliderActive = true; },
+          onLeave: () => { sliderActive = false; },
+          onEnterBack: () => { sliderActive = true; },
+          onLeaveBack: () => { sliderActive = false; },
+        });
+      } else {
         sliderObserver = Observer.create({
           target: '.collection',
           type: 'wheel,touch,scroll,pointer',
