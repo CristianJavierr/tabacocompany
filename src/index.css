@@ -541,7 +541,7 @@ body.page-contacto-scrolled .header-tagline {
 }
 
 .title-row-2 {
-  padding-left: 0.4rem;
+  padding-left: 0;
 }
 
 .title-row-serif {
@@ -2136,7 +2136,7 @@ body.page-contacto-scrolled .header-tagline {
     margin-top: 0;
   }
 
-  .title-row-2 { padding-left: 12px; }
+  .title-row-2 { padding-left: 0; }
   .banner-descr { font-size: 13px; line-height: 1.6; }
 
   /* Collection / Slider */
@@ -2283,7 +2283,7 @@ body.page-contacto-scrolled .header-tagline {
   }
 
   .banner-title { font-size: 32px; }
-  .title-row-2 { padding-left: 10px; }
+  .title-row-2 { padding-left: 0; }
   .banner-descr { font-size: 11px; }
 
   /* Slider */
