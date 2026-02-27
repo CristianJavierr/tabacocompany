@@ -118,17 +118,19 @@ export default function App() {
                       onLeaveBack: () => document.body.classList.remove('page-contacto-scrolled'),
                     });
                   }
-                  // Recreate Lenis & replay home animations when returning home
+                  // Recreate Lenis (desktop only) & replay home animations when returning home
                   if (goingHome) {
-                    const newLenis = new Lenis({
-                      duration: 1.5,
-                      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                      orientation: 'vertical',
-                      gestureOrientation: 'vertical',
-                      smoothWheel: true,
-                    });
-                    lenisRef.current = newLenis;
-                    newLenis.on('scroll', ScrollTrigger.update);
+                    if (window.innerWidth > 768) {
+                      const newLenis = new Lenis({
+                        duration: 1.5,
+                        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                        orientation: 'vertical',
+                        gestureOrientation: 'vertical',
+                        smoothWheel: true,
+                      });
+                      lenisRef.current = newLenis;
+                      newLenis.on('scroll', ScrollTrigger.update);
+                    }
                     ScrollTrigger.refresh();
                     if (replayHomeRef.current) {
                       replayHomeRef.current();
@@ -151,17 +153,20 @@ export default function App() {
   useLayoutEffect(() => {
     document.body.classList.add('page-home');
 
-    const lenis = new Lenis({
-      duration: 1.5,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-    });
-    lenisRef.current = lenis;
+    const isMobile = window.innerWidth <= 768;
 
-    // Integrate Lenis with ScrollTrigger
-    lenis.on('scroll', ScrollTrigger.update);
+    if (!isMobile) {
+      const lenis = new Lenis({
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+      });
+      lenisRef.current = lenis;
+
+      lenis.on('scroll', ScrollTrigger.update);
+    }
 
     function update(time: number) {
       lenisRef.current?.raf(time * 1000);
@@ -873,7 +878,10 @@ export default function App() {
 
     return () => {
       ctx.revert();
-      lenis.destroy();
+      if (lenisRef.current) {
+        lenisRef.current.destroy();
+        lenisRef.current = null;
+      }
       gsap.ticker.remove(update);
     };
   }, []);
