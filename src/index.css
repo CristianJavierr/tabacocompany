@@ -80,6 +80,54 @@ body.page-home {
   }
 }
 
+@media (pointer: coarse), (hover: none) {
+  html, body, body.page-home {
+    overflow: visible !important;
+    overflow-y: auto !important;
+    height: auto !important;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+
+  .experience {
+    height: auto;
+    min-height: 60vh;
+    overflow: visible;
+    padding: 30px 0;
+  }
+
+  .experience-frame {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: 40vh;
+    margin-top: 20px;
+  }
+
+  .exp-header {
+    position: relative;
+    top: auto;
+    left: 16px;
+    right: 16px;
+  }
+
+  .exp-header--2 {
+    position: relative;
+    top: auto;
+    margin-top: 30px;
+  }
+}
+
+/* JS fallback for touch devices */
+body.touch-device,
+body.touch-device.page-home {
+  overflow: visible !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
 body {
   clip-path: polygon(0% 0%, 6.25% 0%, 6.25% 100%, 6.25% 100%, 6.25% 100%, 6.25% 0%, 12.5% 0%, 12.5% 100%, 12.5% 100%, 12.5% 0%, 18.75% 0%, 18.75% 100%, 18.75% 100%, 18.75% 0%, 25% 0%, 25% 100%, 25% 100%, 25% 0%, 31.25% 0%, 31.25% 100%, 31.25% 100%, 31.25% 0%, 37.5% 0%, 37.5% 100%, 37.5% 100%, 37.5% 0%, 43.75% 0%, 43.75% 100%, 43.75% 100%, 43.75% 0%, 50% 0%, 50% 100%, 50% 100%, 50% 0%, 56.25% 0%, 56.25% 100%, 56.25% 100%, 56.25% 0%, 62.5% 0%, 62.5% 100%, 62.5% 100%, 62.5% 0%, 68.75% 0%, 68.75% 100%, 68.75% 100%, 68.75% 0%, 75% 0%, 75% 100%, 75% 100%, 75% 0%, 81.25% 0%, 81.25% 100%, 81.25% 100%, 81.25% 0%, 87.5% 0%, 87.5% 100%, 87.5% 100%, 87.5% 0%, 93.75% 0%, 93.75% 100%, 93.75% 100%, 93.75% 0%, 100% 0%, 100% 100%, 0% 100%);
   transition: 0s;

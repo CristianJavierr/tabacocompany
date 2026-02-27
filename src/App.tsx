@@ -120,7 +120,7 @@ export default function App() {
                   }
                   // Recreate Lenis (desktop only) & replay home animations when returning home
                   if (goingHome) {
-                    if (window.innerWidth > 768) {
+                    if (!('ontouchstart' in window) && navigator.maxTouchPoints === 0) {
                       const newLenis = new Lenis({
                         duration: 1.5,
                         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -153,7 +153,12 @@ export default function App() {
   useLayoutEffect(() => {
     document.body.classList.add('page-home');
 
-    const isMobile = window.innerWidth <= 768;
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isMobile = isTouchDevice || window.innerWidth <= 768;
+
+    if (isTouchDevice) {
+      document.body.classList.add('touch-device');
+    }
 
     if (!isMobile) {
       const lenis = new Lenis({
