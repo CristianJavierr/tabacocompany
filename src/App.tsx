@@ -486,34 +486,38 @@ export default function App() {
         }
       }
 
-      // Observer for Slider
-      const sliderObserver = Observer.create({
-        target: '.collection',
-        type: 'wheel,touch,scroll,pointer',
-        wheelSpeed: 1,
-        onDown: () => {
-          if (playAnimation) return;
-          if (activeIndexSlider > 0) {
-            nextSlide();
-          } else {
-            sliderObserver.disable();
-            if (lenisRef.current) lenisRef.current.start();
-          }
-        },
-        onUp: () => {
-          if (playAnimation) return;
-          if (activeIndexSlider < document.querySelectorAll('.slider-img').length - 1) {
-            prevSlide();
-          } else {
-            sliderObserver.disable();
-            if (lenisRef.current) lenisRef.current.start();
-          }
-        },
-        tolerance: 5,
-        preventDefault: true,
-      });
+      // Observer for Slider (desktop only — touch devices use native scroll)
+      let sliderObserver: globalThis.Observer | null = null;
 
-      sliderObserver.disable();
+      if (!isMobile) {
+        sliderObserver = Observer.create({
+          target: '.collection',
+          type: 'wheel,touch,scroll,pointer',
+          wheelSpeed: 1,
+          onDown: () => {
+            if (playAnimation) return;
+            if (activeIndexSlider > 0) {
+              nextSlide();
+            } else {
+              sliderObserver?.disable();
+              if (lenisRef.current) lenisRef.current.start();
+            }
+          },
+          onUp: () => {
+            if (playAnimation) return;
+            if (activeIndexSlider < document.querySelectorAll('.slider-img').length - 1) {
+              prevSlide();
+            } else {
+              sliderObserver?.disable();
+              if (lenisRef.current) lenisRef.current.start();
+            }
+          },
+          tolerance: 5,
+          preventDefault: true,
+        });
+
+        sliderObserver.disable();
+      }
 
       // Banner Scroll Animation
       gsap.timeline({
@@ -523,22 +527,22 @@ export default function App() {
           start: 'top top',
           end: 'bottom top',
           scrub: true,
-          onEnter: () => sliderObserver.disable(),
+          onEnter: () => sliderObserver?.disable(),
           onLeave: () => {
-            // Banner fully scrolled out → collection fills viewport → enable slider
-            sliderObserver.enable();
-            if (lenisRef.current) lenisRef.current.stop();
+            if (!isMobile) {
+              sliderObserver?.enable();
+              if (lenisRef.current) lenisRef.current.stop();
+            }
           },
           onEnterBack: () => {
-            // Scrolling back up into banner → disable slider
-            sliderObserver.disable();
+            sliderObserver?.disable();
             if (lenisRef.current) lenisRef.current.start();
           },
         },
       })
         .to('.collection', { padding: 0, duration: 1 })
         .to('.slider', { borderRadius: 0, duration: 1 }, '<')
-        .to('.banner-mask', { autoAlpha: 1, duration: 1 }, '<') // autoAlpha handles opacity + visibility
+        .to('.banner-mask', { autoAlpha: 1, duration: 1 }, '<')
         .to('.collection-mask', { autoAlpha: 1, duration: 1 }, '<')
         .fromTo('.slider-img img', { scale: 1.3 }, { scale: 1, duration: 1 }, '<')
         .to('.header', { color: '#ffffff', duration: 0.3 }, '<0.3')
@@ -546,21 +550,21 @@ export default function App() {
         .to('.header-logo', { color: '#ffffff', duration: 0.3 }, '<')
         .to('.header-tagline', { color: '#ffffff', duration: 0.3 }, '<');
 
-      // Re-enable slider observer when scrolling back from shop into collection
-      ScrollTrigger.create({
-        trigger: '.shop',
-        start: 'top bottom-=10px',
-        onEnter: () => {
-          // Scrolling down into shop → make sure observer is off and Lenis is on
-          sliderObserver.disable();
-          if (lenisRef.current) lenisRef.current.start();
-        },
-        onLeaveBack: () => {
-          // Scrolling back up from shop into collection → re-enable observer
-          sliderObserver.enable();
-          if (lenisRef.current) lenisRef.current.stop();
-        },
-      });
+      // Re-enable slider observer when scrolling back from shop into collection (desktop only)
+      if (!isMobile) {
+        ScrollTrigger.create({
+          trigger: '.shop',
+          start: 'top bottom-=10px',
+          onEnter: () => {
+            sliderObserver?.disable();
+            if (lenisRef.current) lenisRef.current.start();
+          },
+          onLeaveBack: () => {
+            sliderObserver?.enable();
+            if (lenisRef.current) lenisRef.current.stop();
+          },
+        });
+      }
 
       // ========== SHOP SECTION ANIMATIONS ==========
 
