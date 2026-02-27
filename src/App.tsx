@@ -754,103 +754,100 @@ export default function App() {
         },
       });
 
-      const experienceTl = gsap.timeline({
-        scrollTrigger: {
+      // Experience animation — desktop only (pinning blocks touch scroll)
+      if (!isMobile) {
+        const experienceTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: '.experience',
+            start: 'top top',
+            end: '+=200%',
+            pin: true,
+            scrub: 0.5,
+            invalidateOnRefresh: true,
+          }
+        });
+
+        ScrollTrigger.create({
           trigger: '.experience',
-          start: 'top top',
+          start: 'top 50%',
           end: '+=200%',
-          pin: true,
-          scrub: 0.5,
-          invalidateOnRefresh: true,
+          onEnter: () => {
+            gsap.to(['.header', '.header-link', '.header-logo', '.header-tagline'], { color: '#ffffff', duration: 0.3 });
+          },
+          onLeave: () => {
+            gsap.to(['.header', '.header-link', '.header-logo', '.header-tagline'], { color: 'var(--dark)', duration: 0.3 });
+          },
+          onEnterBack: () => {
+            gsap.to(['.header', '.header-link', '.header-logo', '.header-tagline'], { color: '#ffffff', duration: 0.3 });
+          },
+          onLeaveBack: () => {
+            gsap.to(['.header', '.header-link', '.header-logo', '.header-tagline'], { color: 'var(--dark)', duration: 0.3 });
+          },
+        });
+
+        experienceTl.to('.exp-header--1', {
+          opacity: 0,
+          duration: 0.3,
+          ease: 'power2.in',
+        }, 0);
+
+        experienceTl.to('.exp-header--2', {
+          top: '82%',
+          left: '0.5rem',
+          right: '0.5rem',
+          duration: 1,
+          ease: 'power2.inOut',
+        }, 0);
+
+        experienceTl.to('.exp-header--2 .exp-header__title', {
+          color: '#ffffff',
+          duration: 0.6,
+          ease: 'none',
+        }, 0.3);
+
+        experienceTl.to('.exp-header--2 .exp-header__label', {
+          color: '#ffffff',
+          opacity: 1,
+          duration: 0.6,
+          ease: 'none',
+        }, 0.3);
+
+        experienceTl.to('.exp-header--2 .exp-header__descr', {
+          color: '#ffffff',
+          opacity: 1,
+          duration: 0.6,
+          ease: 'none',
+        }, 0.3);
+
+        experienceTl.to('.experience-frame', {
+          top: -2,
+          left: -2,
+          width: 'calc(100vw + 4px)',
+          height: 'calc(100vh + 4px)',
+          duration: 1,
+          ease: 'power2.inOut',
+        }, 0);
+
+        function getExperiencePanDistance() {
+          const img = document.querySelector('.experience-img') as HTMLImageElement;
+          if (!img || !img.naturalWidth) return 0;
+          const finalImgW = (window.innerHeight * img.naturalWidth) / img.naturalHeight;
+          return -(finalImgW - window.innerWidth);
         }
-      });
 
-      // Header color tied to experience section — all 4 directions
-      ScrollTrigger.create({
-        trigger: '.experience',
-        start: 'top 50%',
-        end: '+=200%',
-        onEnter: () => {
-          gsap.to(['.header', '.header-link', '.header-logo', '.header-tagline'], { color: '#ffffff', duration: 0.3 });
-        },
-        onLeave: () => {
-          gsap.to(['.header', '.header-link', '.header-logo', '.header-tagline'], { color: 'var(--dark)', duration: 0.3 });
-        },
-        onEnterBack: () => {
-          gsap.to(['.header', '.header-link', '.header-logo', '.header-tagline'], { color: '#ffffff', duration: 0.3 });
-        },
-        onLeaveBack: () => {
-          gsap.to(['.header', '.header-link', '.header-logo', '.header-tagline'], { color: 'var(--dark)', duration: 0.3 });
-        },
-      });
+        experienceTl.to('.experience-img', {
+          scale: 1,
+          x: () => getExperiencePanDistance() * 0.15,
+          duration: 1,
+          ease: 'power2.inOut',
+        }, 0);
 
-      // Phase 1: Fade out rows 1 and 3
-      experienceTl.to('.exp-header--1', {
-        opacity: 0,
-        duration: 0.3,
-        ease: 'power2.in',
-      }, 0);
-
-      // Phase 1: Reposition row 2 header to bottom-center + white
-      experienceTl.to('.exp-header--2', {
-        top: '82%',
-        left: '0.5rem',
-        right: '0.5rem',
-        duration: 1,
-        ease: 'power2.inOut',
-      }, 0);
-
-      experienceTl.to('.exp-header--2 .exp-header__title', {
-        color: '#ffffff',
-        duration: 0.6,
-        ease: 'none',
-      }, 0.3);
-
-      experienceTl.to('.exp-header--2 .exp-header__label', {
-        color: '#ffffff',
-        opacity: 1,
-        duration: 0.6,
-        ease: 'none',
-      }, 0.3);
-
-      experienceTl.to('.exp-header--2 .exp-header__descr', {
-        color: '#ffffff',
-        opacity: 1,
-        duration: 0.6,
-        ease: 'none',
-      }, 0.3);
-
-      // Phase 1: Grow frame to fullscreen (slight overshoot to kill sub-pixel gaps)
-      experienceTl.to('.experience-frame', {
-        top: -2,
-        left: -2,
-        width: 'calc(100vw + 4px)',
-        height: 'calc(100vh + 4px)',
-        duration: 1,
-        ease: 'power2.inOut',
-      }, 0);
-
-      function getExperiencePanDistance() {
-        const img = document.querySelector('.experience-img') as HTMLImageElement;
-        if (!img || !img.naturalWidth) return 0;
-        const finalImgW = (window.innerHeight * img.naturalWidth) / img.naturalHeight;
-        return -(finalImgW - window.innerWidth);
+        experienceTl.to('.experience-img', {
+          x: () => getExperiencePanDistance(),
+          duration: 1.2,
+          ease: 'none',
+        });
       }
-
-      // Phase 1: De-zoom + start drifting right
-      experienceTl.to('.experience-img', {
-        scale: 1,
-        x: () => getExperiencePanDistance() * 0.15,
-        duration: 1,
-        ease: 'power2.inOut',
-      }, 0);
-
-      // Phase 2: Continue horizontal pan to the end
-      experienceTl.to('.experience-img', {
-        x: () => getExperiencePanDistance(),
-        duration: 1.2,
-        ease: 'none',
-      });
 
       // ========== FOOTER ANIMATIONS ==========
 
