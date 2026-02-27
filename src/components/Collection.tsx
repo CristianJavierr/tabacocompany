@@ -16,7 +16,7 @@ export default function Collection() {
           </div>
         </div>
         
-        <div className="slider-descr">La Experiencia D'Tabaco Company</div>
+        <div className="slider-descr">La Experiencia The Tabaco Company</div>
         <div className="slider-title">
           <div className="slider-title__item">El Arte de Vivir</div>
           <div className="slider-title__item"></div>

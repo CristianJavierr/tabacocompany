@@ -2,7 +2,7 @@ import React from 'react';
 
 const lines = [
   { content: 'Desde 1987,', hasLogo: false },
-  { content: null, hasLogo: true, logo: "D'Tabaco®", after: ' Company' },
+  { content: null, hasLogo: true, logo: "The Tabaco®", after: ' Company' },
   { content: 'define el arte del', hasLogo: false },
   { content: 'cigarro premium', hasLogo: false },
 ];

@@ -3,11 +3,11 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const marcas = [
-  { name: 'Reserva Privada', image: '/images/1.jpeg' },
-  { name: 'Gran Distinción', image: '/images/2.jpeg' },
-  { name: 'Noche Dorada', image: '/images/3.jpeg' },
-  { name: 'Alma Negra', image: '/images/4.jpeg' },
-  { name: 'Casa Imperial', image: '/images/1.jpeg' },
+  { name: 'Montes de María', image: '/images/1.jpeg' },
+  { name: 'Bohekio', image: '/images/2.jpeg' },
+  { name: 'Mojo', image: '/images/3.jpeg' },
+  { name: "Tim's Sticks", image: '/images/4.jpeg' },
+  { name: 'Vivaldi', image: '/images/1.jpeg' },
 ];
 
 export default function MarcasList() {
