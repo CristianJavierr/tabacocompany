@@ -1,17 +1,27 @@
 import React from 'react';
 
+function getSliderImages(): [string, string] {
+  try {
+    const saved = localStorage.getItem('theme');
+    if (saved && JSON.parse(saved).dark) return ['/images/b.jpg', '/images/a.jpg'];
+  } catch {}
+  return ['/images/image3.png', '/images/ia.png'];
+}
+
 export default function Collection() {
+  const [img1, img2] = getSliderImages();
+
   return (
     <section className="collection">
       <div className="collection-mask"></div>
       <div className="slider">
         <div className="slider-wrapp">
           <div className="slider-img">
-            <img src="/images/image3.png" alt="" loading="eager" decoding="async" fetchPriority="high" />
+            <img src={img1} alt="" loading="eager" decoding="async" fetchPriority="high" />
             <div className="slider-gradient"></div>
           </div>
           <div className="slider-img active">
-            <img src="/images/ia.png" alt="" loading="eager" decoding="async" fetchPriority="high" />
+            <img src={img2} alt="" loading="eager" decoding="async" fetchPriority="high" />
             <div className="slider-gradient"></div>
           </div>
         </div>
