@@ -1866,22 +1866,22 @@ body.page-contacto-scrolled .header-tagline {
 .contacto-form {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 16px;
 }
 
 .contacto-form__title {
   font-family: var(--font-serif);
   font-weight: 300;
-  font-size: 0.16rem;
+  font-size: 22px;
   text-transform: uppercase;
   color: var(--dark);
-  margin: 0 0 0.05rem;
+  margin: 0 0 8px;
 }
 
 .contacto-form__row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.15rem;
+  gap: 16px;
 }
 
 .contacto-form__group {
@@ -1891,7 +1891,7 @@ body.page-contacto-scrolled .header-tagline {
 }
 
 .contacto-form__label {
-  font-size: 0.055rem;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--dark);
@@ -1901,12 +1901,12 @@ body.page-contacto-scrolled .header-tagline {
 .contacto-form__input,
 .contacto-form__textarea {
   width: 100%;
-  padding: 0.05rem 0;
+  padding: 0.04rem 0;
   background: transparent;
   border: none;
   border-bottom: 1px solid rgba(19, 19, 19, 0.15);
   font-family: var(--main-font);
-  font-size: 0.08rem;
+  font-size: 14px;
   color: var(--dark);
   outline: none;
   transition: border-color 0.3s ease;
@@ -1919,7 +1919,7 @@ body.page-contacto-scrolled .header-tagline {
 
 .contacto-form__textarea {
   resize: vertical;
-  min-height: 0.5rem;
+  min-height: 80px;
   line-height: 1.5;
 }
 
