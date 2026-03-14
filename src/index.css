@@ -1978,82 +1978,31 @@ body.page-contacto-scrolled .header-tagline {
   transform-origin: left;
 }
 
-/* ===== THEME TESTER (Global) ===== */
+/* ===== THEME OVERRIDES ===== */
+/* Principle: --beige and --dark already propagate via CSS variables.
+   Only override what can't be handled by variable propagation.
+   NEVER use !important on properties GSAP animates (opacity, visibility, color on header). */
 
-
-.theme-dark .banner,
-.theme-dark .shop,
-.theme-dark .submarcas,
-.theme-dark .marcas-list,
-.theme-dark .historia,
-.theme-dark .experience,
-.theme-dark .site-footer,
-.theme-dark .contacto {
-  background: var(--beige) !important;
-}
-
-/* ---- Header / Nav ---- */
-/* GSAP animates header color with var(--dark) which already points to
-   the theme color — no !important needed, avoids per-frame conflicts */
-.theme-active .header a,
-.theme-active .header span {
-  color: var(--dark);
-}
-
-/* ---- Banner ---- */
-.theme-active .banner {
-  background: var(--theme-bg) !important;
-}
-
+/* Masks: make transparent so GSAP animates freely with no visual effect */
 .theme-active .banner-mask,
 .theme-active .collection-mask {
   background: transparent !important;
 }
 
-.theme-active .banner-text,
-.theme-active .banner-text span,
-.theme-active .fade-el,
-.theme-active .banner-title,
-.theme-active .title-chunk,
-.theme-active .title-chunk span,
-.theme-active .banner-descr,
-.theme-active .banner-descr span {
-  color: var(--theme-text) !important;
+/* Slider text: forced white (dark images behind) */
+.theme-active .slider-descr,
+.theme-active .slider-title__item,
+.theme-active .slider-numeric__item,
+.theme-active .slider-numeric__total {
+  color: #ffffff !important;
 }
 
+/* ---- Accent colors (don't exist in original CSS) ---- */
 .theme-active .title-chunk-semibold-italic,
 .theme-active .title-chunk-semibold-italic span,
 .theme-active .title-chunk-italic,
 .theme-active .title-chunk-italic span {
   color: var(--theme-accent) !important;
-}
-
-/* ---- Collection / Slider ---- */
-.theme-active .collection {
-  background: var(--theme-bg) !important;
-}
-
-.theme-active .slider-descr,
-.theme-active .slider-title,
-.theme-active .slider-title__item,
-.theme-active .slider-numeric,
-.theme-active .slider-numeric__item,
-.theme-active .slider-numeric__active,
-.theme-active .slider-numeric__total {
-  color: #ffffff !important;
-}
-
-/* ---- Shop ---- */
-.theme-active .shop {
-  background: var(--theme-bg) !important;
-}
-
-.theme-active .shop-header__title,
-.theme-active .shop-header__title span,
-.theme-active .shop-header__descr,
-.theme-active .shop-header__descr span,
-.theme-active .shop-reveal {
-  color: var(--theme-text) !important;
 }
 
 .theme-active .shop-header__label,
@@ -2062,54 +2011,22 @@ body.page-contacto-scrolled .header-tagline {
   color: var(--theme-accent) !important;
 }
 
-.theme-active .shop-card__name,
-.theme-active .shop-card__price,
-.theme-active .shop-card__sqft,
-.theme-active .shop-card__badge {
-  color: var(--theme-text) !important;
-}
-
 .theme-active .shop-card__btn {
   background: var(--theme-accent) !important;
-  color: var(--theme-bg) !important;
+  color: var(--beige) !important;
   border-color: var(--theme-accent) !important;
-}
-
-.theme-active .shop-card__info {
-  background: transparent;
 }
 
 .theme-active .shop-footer__link {
   color: var(--theme-accent) !important;
 }
 
-/* ---- Submarcas ---- */
-.theme-active .submarcas {
-  background: var(--theme-bg) !important;
-}
-
-.theme-active .submarcas-title,
-.theme-active .submarcas-title__top,
-.theme-active .submarcas-title__bottom,
-.theme-active .submarcas-reveal {
-  color: var(--theme-text) !important;
-}
-
 .theme-active .submarcas-line {
   background: var(--theme-accent) !important;
 }
 
-/* ---- Marcas List ---- */
-.theme-active .marcas-list {
-  background: var(--theme-bg) !important;
-}
-
 .theme-active .marcas-list__item {
   border-color: color-mix(in srgb, var(--dark) 15%, transparent) !important;
-}
-
-.theme-active .marcas-list__name {
-  color: var(--theme-text) !important;
 }
 
 .theme-active .marcas-list__line {
@@ -2120,18 +2037,9 @@ body.page-contacto-scrolled .header-tagline {
   color: var(--theme-accent) !important;
 }
 
-/* ---- Historia ---- */
-.theme-active .historia {
-  background: var(--theme-bg) !important;
-}
-
+/* Historia: stroke needs explicit override */
 .theme-active .historia-stroke {
-  -webkit-text-stroke-color: var(--theme-text) !important;
-  color: transparent !important;
-}
-
-.theme-active .historia-fill {
-  color: var(--theme-text) !important;
+  -webkit-text-stroke-color: var(--dark) !important;
 }
 
 .theme-active .historia-logo {
@@ -2139,38 +2047,13 @@ body.page-contacto-scrolled .header-tagline {
   -webkit-text-stroke-color: var(--theme-accent) !important;
 }
 
-/* ---- Experience ---- */
-.theme-active .experience {
-  background: var(--theme-bg) !important;
-}
-
-.theme-active .exp-reveal,
-.theme-active .exp-title-slide,
-.theme-active .exp-title-slide-right {
-  color: var(--theme-text) !important;
-}
-
 .theme-active .exp-title-bold-italic {
   color: var(--theme-accent) !important;
 }
 
-/* ---- Footer ---- */
-.theme-active .site-footer {
-  background: var(--theme-bg) !important;
-  color: var(--theme-text) !important;
-}
-
+/* Footer accents */
 .theme-active .footer-logo {
   color: var(--theme-accent) !important;
-}
-
-.theme-active .footer-tagline,
-.theme-active .footer-nav__link,
-.theme-active .footer-info__text,
-.theme-active .footer-copy,
-.theme-active .footer-legal,
-.theme-active .footer-reveal {
-  color: var(--theme-text) !important;
 }
 
 .theme-active .footer-nav__link:hover {
@@ -2181,120 +2064,48 @@ body.page-contacto-scrolled .header-tagline {
   background: var(--theme-accent) !important;
 }
 
-/* ---- Contacto ---- */
-.theme-active .contacto {
-  background: var(--theme-bg) !important;
-}
-
-.theme-active .contacto-hero {
-  background: var(--theme-bg) !important;
-}
-
-.theme-active .contacto-hero__label,
-.theme-active .contacto-hero__label span,
-.theme-active .contacto-hero__title,
-.theme-active .contacto-hero__title span,
-.theme-active .contacto-hero__descr,
-.theme-active .contacto-hero__descr span,
-.theme-active .contacto-reveal {
-  color: var(--theme-text) !important;
-}
-
+/* Contacto accents */
 .theme-active .contacto-title-italic {
   color: var(--theme-accent) !important;
-}
-
-.theme-active .contacto-body {
-  background: var(--theme-bg) !important;
-  color: var(--theme-text) !important;
 }
 
 .theme-active .contacto-info__heading {
   color: var(--theme-accent) !important;
 }
 
-.theme-active .contacto-info__block,
-.theme-active .contacto-info__block p {
-  color: var(--theme-text) !important;
-}
-
-.theme-active .contacto-form__title {
-  color: var(--theme-text) !important;
-}
-
-.theme-active .contacto-form__label {
-  color: var(--theme-text) !important;
-  opacity: 0.7;
-}
-
+/* Form inputs: custom bg/border that don't use --beige or --dark */
 .theme-active .contacto-form__input,
 .theme-active .contacto-form__textarea {
   background: var(--theme-input-bg) !important;
   border-color: var(--theme-input-border) !important;
-  color: var(--theme-text) !important;
-}
-
-.theme-active .contacto-form__input::placeholder,
-.theme-active .contacto-form__textarea::placeholder {
-  color: var(--theme-text) !important;
-  opacity: 0.35;
 }
 
 .theme-active .contacto-form__submit {
   background: var(--theme-accent) !important;
-  color: var(--theme-bg) !important;
+  color: var(--beige) !important;
   border-color: var(--theme-accent) !important;
 }
 
-/* ---- Cart ---- */
-.theme-active .cart-panel {
-  background: var(--theme-bg) !important;
-}
-
+/* Cart: borders and buttons only (panel bg uses var(--beige) already) */
 .theme-active .cart-panel__header {
-  border-color: color-mix(in srgb, var(--theme-text) 15%, transparent) !important;
-}
-
-.theme-active .cart-panel__title,
-.theme-active .cart-item__name,
-.theme-active .cart-item__price,
-.theme-active .cart-item__qty-val,
-.theme-active .cart-empty p {
-  color: var(--theme-text) !important;
-}
-
-.theme-active .cart-item__category,
-.theme-active .cart-item__remove,
-.theme-active .cart-empty span {
-  color: var(--theme-text) !important;
-  opacity: 0.5;
-}
-
-.theme-active .cart-panel__close {
-  color: var(--theme-text) !important;
+  border-color: color-mix(in srgb, var(--dark) 15%, transparent) !important;
 }
 
 .theme-active .cart-item {
-  border-color: color-mix(in srgb, var(--theme-text) 10%, transparent) !important;
+  border-color: color-mix(in srgb, var(--dark) 10%, transparent) !important;
 }
 
 .theme-active .cart-item__qty-btn {
-  color: var(--theme-text) !important;
-  border-color: color-mix(in srgb, var(--theme-text) 15%, transparent) !important;
+  border-color: color-mix(in srgb, var(--dark) 15%, transparent) !important;
 }
 
 .theme-active .cart-panel__footer {
-  border-color: color-mix(in srgb, var(--theme-text) 15%, transparent) !important;
-}
-
-.theme-active .cart-panel__total,
-.theme-active .cart-panel__total-price {
-  color: var(--theme-text) !important;
+  border-color: color-mix(in srgb, var(--dark) 15%, transparent) !important;
 }
 
 .theme-active .cart-panel__checkout {
   background: var(--theme-accent) !important;
-  color: var(--theme-bg) !important;
+  color: var(--beige) !important;
   border-color: var(--theme-accent) !important;
 }
 
