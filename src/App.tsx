@@ -17,6 +17,7 @@ import Experience from './components/Experience';
 import Cart from './components/Cart';
 import Footer from './components/Footer';
 import Contacto from './components/Contacto';
+import ThemeTester from './components/ThemeTester';
 import { PageContext, type Page } from './context/PageContext';
 
 gsap.registerPlugin(ScrollTrigger, Observer, CustomEase);
@@ -1006,6 +1007,7 @@ export default function App() {
           </div>
           {currentPage === 'contacto' && <Contacto />}
         </main>
+        <ThemeTester />
       </div>
     </PageContext.Provider>
   );
