@@ -1985,6 +1985,11 @@ body.page-contacto-scrolled .header-tagline {
   background: var(--theme-bg) !important;
 }
 
+.theme-active .banner-mask,
+.theme-active .collection-mask {
+  display: none !important;
+}
+
 .theme-active .banner-text,
 .theme-active .banner-text span,
 .theme-active .fade-el,
