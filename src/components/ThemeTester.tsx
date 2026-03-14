@@ -7,7 +7,7 @@ const ORIGINAL_IMAGES = [
 
 const DARK_IMAGES = [
   { src: '/images/a.jpg', slide: 0 },
-  { src: '/images/verde2.png', slide: 1 },
+  { src: '/images/b.jpg', slide: 1 },
 ];
 
 const presets = [
