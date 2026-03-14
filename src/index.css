@@ -652,6 +652,18 @@ body.page-contacto-scrolled .header-tagline {
   will-change: transform;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+}
+
+.slider-img-dark {
+  display: none;
+}
+
+.theme-dark .slider-img-dark {
+  display: block;
+}
+
+.theme-dark .slider-img-light {
+  display: none;
   transform: translateZ(0);
 }
 

@@ -1,14 +1,4 @@
-import React, { useState, useRef } from 'react';
-
-const ORIGINAL_IMAGES = [
-  { src: '/images/image3.png', slide: 0 },
-  { src: '/images/ia.png', slide: 1 },
-];
-
-const DARK_IMAGES = [
-  { src: '/images/a.jpg', slide: 0 },
-  { src: '/images/b.jpg', slide: 1 },
-];
+import React, { useState } from 'react';
 
 const presets = [
   {
@@ -76,25 +66,6 @@ const presets = [
   },
 ];
 
-function preloadImage(src: string): Promise<void> {
-  return new Promise((resolve) => {
-    const img = new Image();
-    img.onload = () => resolve();
-    img.onerror = () => resolve();
-    img.src = src;
-  });
-}
-
-async function swapSliderImages(images: typeof ORIGINAL_IMAGES) {
-  await Promise.all(images.map(img => preloadImage(img.src)));
-  const sliderImgs = document.querySelectorAll('.slider-img img');
-  sliderImgs.forEach((el, i) => {
-    if (images[i]) {
-      (el as HTMLImageElement).src = images[i].src;
-    }
-  });
-}
-
 export default function ThemeTester() {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -113,7 +84,6 @@ export default function ThemeTester() {
       root.style.removeProperty('--theme-bg');
       root.style.removeProperty('--theme-input-bg');
       root.style.removeProperty('--theme-input-border');
-      swapSliderImages(ORIGINAL_IMAGES);
       return;
     }
 
@@ -128,10 +98,8 @@ export default function ThemeTester() {
 
     if (preset.dark) {
       root.classList.add('theme-dark');
-      swapSliderImages(DARK_IMAGES);
     } else {
       root.classList.remove('theme-dark');
-      swapSliderImages(ORIGINAL_IMAGES);
     }
   }
 
