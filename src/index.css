@@ -61,7 +61,7 @@ body {
   font-size: 16px;
   font-family: var(--main-font);
   color: var(--dark);
-  background: var(--beige);
+  background: #FFFAF6;
   margin: 0;
   padding: 0;
 }
@@ -652,6 +652,22 @@ body.page-contacto-scrolled .header-tagline {
   backface-visibility: hidden;
 }
 
+.theme-dark .slider-img {
+  background-size: cover;
+  background-position: center;
+}
+
+.theme-dark .slider-img:first-child {
+  background-image: url('/images/b.jpg');
+}
+
+.theme-dark .slider-img:last-child {
+  background-image: url('/images/a.jpg');
+}
+
+.theme-dark .slider-img img {
+  visibility: hidden;
+}
 
 .slider-descr {
   position: absolute;
@@ -1966,6 +1982,12 @@ body.page-contacto-scrolled .header-tagline {
 /* Principle: --beige and --dark already propagate via CSS variables.
    Only override what can't be handled by variable propagation.
    NEVER use !important on properties GSAP animates (opacity, visibility, color on header). */
+
+/* Masks: make transparent so GSAP animates freely with no visual effect */
+.theme-active .banner-mask,
+.theme-active .collection-mask {
+  background: transparent !important;
+}
 
 /* Slider text: forced white (dark images behind) */
 .theme-active .slider-descr,

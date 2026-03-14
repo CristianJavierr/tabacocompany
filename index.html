@@ -4,35 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Tobacco Company</title>
-    <script>
-      (function(){
-        var t = localStorage.getItem('theme');
-        var dark = false;
-        if (t) {
-          try {
-            var p = JSON.parse(t);
-            var r = document.documentElement;
-            r.style.setProperty('--beige', p.bg);
-            r.style.setProperty('--dark', p.text);
-            r.style.setProperty('--theme-accent', p.accent);
-            r.style.setProperty('--theme-input-bg', p.inputBg);
-            r.style.setProperty('--theme-input-border', p.inputBorder);
-            r.classList.add('theme-active');
-            if (p.dark) { r.classList.add('theme-dark'); dark = true; }
-          } catch(e){}
-        }
-        var imgs = dark
-          ? ['/images/b.jpg', '/images/a.jpg']
-          : ['/images/image3.png', '/images/ia.png'];
-        imgs.forEach(function(src) {
-          var link = document.createElement('link');
-          link.rel = 'preload';
-          link.as = 'image';
-          link.href = src;
-          document.head.appendChild(link);
-        });
-      })();
-    </script>
+    <link rel="preload" href="/images/ia.png" as="image" />
     <link rel="preload" href="/images/image2.jpeg" as="image" />
     <link rel="preload" href="/images/hs.png" as="image" />
     <link rel="preload" href="/images/hoja.png" as="image" />

@@ -66,31 +66,50 @@ const presets = [
   },
 ];
 
-function getSavedTheme(): string {
-  try {
-    const saved = localStorage.getItem('theme');
-    if (saved) return JSON.parse(saved).name || 'Original';
-  } catch {}
-  return 'Original';
-}
-
 export default function ThemeTester() {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [active, setActive] = useState(getSavedTheme);
-
+  const [active, setActive] = useState('Original');
   function applyTheme(preset: typeof presets[0]) {
+    setActive(preset.name);
+    const root = document.documentElement;
+
     if (preset.name === 'Original') {
-      localStorage.removeItem('theme');
-    } else {
-      localStorage.setItem('theme', JSON.stringify(preset));
+      root.classList.remove('theme-active', 'theme-dark');
+      root.style.removeProperty('--beige');
+      root.style.removeProperty('--dark');
+      root.style.removeProperty('--theme-accent');
+      root.style.removeProperty('--theme-text');
+      root.style.removeProperty('--theme-bg');
+      root.style.removeProperty('--theme-input-bg');
+      root.style.removeProperty('--theme-input-border');
+      root.style.background = '';
+      document.body.style.background = '#FFFAF6';
+      return;
     }
-    window.location.reload();
+
+    root.style.setProperty('--beige', preset.bg);
+    root.style.setProperty('--dark', preset.text);
+    root.style.setProperty('--theme-accent', preset.accent);
+    root.style.setProperty('--theme-text', preset.text);
+    root.style.setProperty('--theme-bg', preset.bg);
+    root.style.setProperty('--theme-input-bg', preset.inputBg);
+    root.style.setProperty('--theme-input-border', preset.inputBorder);
+    root.classList.add('theme-active');
+    root.style.background = preset.bg;
+    document.body.style.background = preset.bg;
+
+    if (preset.dark) {
+      root.classList.add('theme-dark');
+    } else {
+      root.classList.remove('theme-dark');
+    }
   }
 
   function handleHide() {
-    localStorage.removeItem('theme');
-    window.location.reload();
+    applyTheme(presets.find(p => p.name === 'Original')!);
+    setOpen(false);
+    setHidden(true);
   }
 
   if (hidden) return null;
