@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 
 const ORIGINAL_IMAGES = [
   { src: '/images/image3.png', slide: 0 },
-  { src: '/images/a.jpg', slide: 1 },
+  { src: '/images/ia.png', slide: 1 },
 ];
 
 const DARK_IMAGES = [
