@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const presets = [
   {
     name: 'Verde & Dorado',
-    bg: '#122613',
+    bg: '#090e09',
     accent: '#c8a84e',
     text: '#f5f0e8',
     inputBg: '#1a3319',
