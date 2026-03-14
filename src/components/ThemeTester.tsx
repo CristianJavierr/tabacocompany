@@ -11,12 +11,12 @@ const presets = [
     dark: true,
   },
   {
-    name: 'Crema & Terracota',
+    name: 'Crema & Dorado',
     bg: '#f4ece1',
-    accent: '#b5654a',
+    accent: '#b08d3e',
     text: '#3a2e28',
     inputBg: '#efe5d8',
-    inputBorder: '#b5654a',
+    inputBorder: '#b08d3e',
     dark: false,
   },
   {
