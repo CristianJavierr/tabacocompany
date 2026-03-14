@@ -93,6 +93,7 @@ body.page-home {
     height: auto;
     min-height: 60vh;
     overflow: visible;
+    overflow-x: hidden;
     padding: 30px 0;
   }
 
@@ -1871,7 +1872,7 @@ body.page-contacto-scrolled .header-tagline {
 .contacto-form__title {
   font-family: var(--font-serif);
   font-weight: 300;
-  font-size: 0.22rem;
+  font-size: 0.16rem;
   text-transform: uppercase;
   color: var(--dark);
   margin: 0 0 0.05rem;
@@ -1890,7 +1891,7 @@ body.page-contacto-scrolled .header-tagline {
 }
 
 .contacto-form__label {
-  font-size: 0.07rem;
+  font-size: 0.055rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--dark);
@@ -1900,12 +1901,12 @@ body.page-contacto-scrolled .header-tagline {
 .contacto-form__input,
 .contacto-form__textarea {
   width: 100%;
-  padding: 0.07rem 0;
+  padding: 0.05rem 0;
   background: transparent;
   border: none;
   border-bottom: 1px solid rgba(19, 19, 19, 0.15);
   font-family: var(--main-font);
-  font-size: 0.11rem;
+  font-size: 0.08rem;
   color: var(--dark);
   outline: none;
   transition: border-color 0.3s ease;
@@ -2643,6 +2644,7 @@ body.page-contacto-scrolled .header-tagline {
     height: auto;
     min-height: 60vh;
     overflow: visible;
+    overflow-x: hidden;
     padding: 30px 0;
   }
 
