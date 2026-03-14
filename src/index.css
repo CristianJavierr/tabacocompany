@@ -1964,6 +1964,167 @@ body.page-contacto-scrolled .header-tagline {
   transform-origin: left;
 }
 
+/* ===== THEME TESTER (Contacto) ===== */
+
+.contacto.theme-active {
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.02) 0%, transparent 40%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-color: var(--theme-bg);
+  transition: background-color 0.5s ease;
+}
+
+.contacto.theme-active .contacto-hero {
+  background: transparent;
+}
+
+.contacto.theme-active .contacto-hero__label,
+.contacto.theme-active .contacto-hero__title,
+.contacto.theme-active .contacto-hero__descr {
+  color: var(--theme-text);
+}
+
+.contacto.theme-active .contacto-title-italic {
+  color: var(--theme-accent);
+}
+
+.contacto.theme-active .contacto-body {
+  background: transparent;
+  color: var(--theme-text);
+}
+
+.contacto.theme-active .contacto-info__heading {
+  color: var(--theme-accent);
+}
+
+.contacto.theme-active .contacto-info__block p {
+  color: var(--theme-text);
+  opacity: 0.8;
+}
+
+.contacto.theme-active .contacto-form__title {
+  color: var(--theme-text);
+}
+
+.contacto.theme-active .contacto-form__label {
+  color: var(--theme-text);
+  opacity: 0.7;
+}
+
+.contacto.theme-active .contacto-form__input,
+.contacto.theme-active .contacto-form__textarea {
+  background: var(--theme-input-bg);
+  border-color: var(--theme-input-border);
+  color: var(--theme-text);
+}
+
+.contacto.theme-active .contacto-form__input::placeholder,
+.contacto.theme-active .contacto-form__textarea::placeholder {
+  color: var(--theme-text);
+  opacity: 0.35;
+}
+
+.contacto.theme-active .contacto-form__submit {
+  background: var(--theme-accent);
+  color: var(--theme-bg);
+  border-color: var(--theme-accent);
+}
+
+.contacto.theme-active .contacto-footer,
+.contacto.theme-active .contacto-back {
+  color: var(--theme-text);
+}
+
+.contacto.theme-active .contacto-back::after {
+  background: var(--theme-accent);
+}
+
+/* Theme Tester Widget */
+.theme-tester {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  font-family: var(--font-sans);
+}
+
+.theme-tester__toggle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(12px);
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.theme-tester__toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(0,0,0,0.4);
+}
+
+.theme-tester__panel {
+  position: absolute;
+  bottom: 64px;
+  right: 0;
+  width: 220px;
+  background: rgba(15,15,15,0.92);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+.theme-tester__title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.5);
+  margin: 0 0 4px;
+}
+
+.theme-tester__btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.8);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.theme-tester__btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.theme-tester__btn--active {
+  border-color: rgba(200,168,78,0.6);
+  background: rgba(200,168,78,0.12);
+}
+
+.theme-tester__swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid;
+  flex-shrink: 0;
+}
+
 @media (max-width: 480px) {
   .exp-header {
     grid-template-columns: 1fr;
