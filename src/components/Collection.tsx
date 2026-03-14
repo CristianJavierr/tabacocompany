@@ -11,7 +11,7 @@ export default function Collection() {
             <div className="slider-gradient"></div>
           </div>
           <div className="slider-img active">
-            <img src="/images/a.jpg" alt="" loading="eager" decoding="async" fetchPriority="high" />
+            <img src="/images/ia.png" alt="" loading="eager" decoding="async" fetchPriority="high" />
             <div className="slider-gradient"></div>
           </div>
         </div>
