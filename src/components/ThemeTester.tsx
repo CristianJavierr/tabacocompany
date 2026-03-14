@@ -6,7 +6,7 @@ const ORIGINAL_IMAGES = [
 ];
 
 const DARK_IMAGES = [
-  { src: '/images/verde1.png', slide: 0 },
+  { src: '/images/verde1.jpg', slide: 0 },
   { src: '/images/verde2.png', slide: 1 },
 ];
 
