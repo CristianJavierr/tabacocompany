@@ -61,7 +61,7 @@ body {
   font-size: 16px;
   font-family: var(--main-font);
   color: var(--dark);
-  background: var(--beige);
+  background: #FFFAF6;
   margin: 0;
   padding: 0;
 }
