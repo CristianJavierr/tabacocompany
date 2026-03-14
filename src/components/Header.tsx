@@ -19,7 +19,7 @@ export default function Header() {
     <header className="header">
       <div className="header-wrapp">
         <div className="header-logo" style={{ cursor: 'pointer' }} onClick={(e) => handleNav(e, 'home')}>
-          The Tabaco®
+          The Tobacco®
         </div>
         <div className="header-tagline">cigarros premium</div>
         <div className={`header-menu${menuOpen ? ' open' : ''}`}>

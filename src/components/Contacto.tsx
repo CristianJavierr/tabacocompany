@@ -24,7 +24,7 @@ export default function Contacto() {
         </div>
         <div className="contacto-hero__right">
           <div className="contacto-hero__img contacto-reveal-up">
-            <img src="/images/1.jpeg" alt="The Tabaco Collection" loading="lazy" decoding="async" />
+            <img src="/images/1.jpeg" alt="The Tobacco Collection" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@ export default function Contacto() {
           </div>
           <div className="contacto-info__block contacto-reveal-up">
             <h3 className="contacto-info__heading">Escríbenos</h3>
-            <p>info@thetabaco.com</p>
+            <p>info@thetobacco.com</p>
             <p>+1 (809) 555-0187</p>
           </div>
           <div className="contacto-info__block contacto-reveal-up">

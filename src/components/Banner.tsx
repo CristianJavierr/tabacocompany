@@ -32,7 +32,7 @@ export default function Banner() {
         </div>
       </div>
       <div className="banner-descr split">
-        <SplitTextWrapper>The Tabaco Company elabora cigarros premium para el paladar exigente.</SplitTextWrapper>
+        <SplitTextWrapper>The Tobacco Company elabora cigarros premium para el paladar exigente.</SplitTextWrapper>
         <SplitTextWrapper>Tabaco añejado, mezclas magistrales y una experiencia inolvidable.</SplitTextWrapper>
         <SplitTextWrapper>Eleva tus momentos. Descubre el arte de lo extraordinario.</SplitTextWrapper>
       </div>

@@ -30,7 +30,7 @@ export default function Experience() {
         <div className="experience-img-wrap">
           <img
             src="/images/hs.png"
-            alt="La Experiencia The Tabaco"
+            alt="La Experiencia The Tobacco"
             className="experience-img"
             loading="eager"
             decoding="async"
