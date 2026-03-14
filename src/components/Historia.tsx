@@ -1,7 +1,7 @@
 import React from 'react';
 
 const lines = [
-  { content: 'Desde 1987,', hasLogo: false },
+  { content: 'Desde 2020,', hasLogo: false },
   { content: null, hasLogo: true, logo: "The Tobacco®", after: ' Company' },
   { content: 'define el arte del', hasLogo: false },
   { content: 'cigarro premium', hasLogo: false },

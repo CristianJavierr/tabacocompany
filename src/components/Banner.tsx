@@ -15,7 +15,7 @@ export default function Banner() {
     <section className="banner">
       <div className="banner-mask"></div>
       <div className="banner-text split">
-        <SplitTextWrapper>Lujo Enrollado a Mano Desde 1987</SplitTextWrapper>
+        <SplitTextWrapper>Lujo Enrollado a Mano Desde 2020</SplitTextWrapper>
       </div>
       <div className="banner-title">
         <div className="title-row title-row-1">
