@@ -1969,20 +1969,6 @@ body.page-contacto-scrolled .header-tagline {
 body.theme-active {
   background-color: var(--theme-bg) !important;
   color: var(--theme-text) !important;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-body.theme-active::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse at 15% 30%, rgba(255,255,255,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 70%, rgba(255,255,255,0.03) 0%, transparent 40%),
-    radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.015) 0%, transparent 60%),
-    url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
 }
 
 /* ---- Header / Nav ---- */

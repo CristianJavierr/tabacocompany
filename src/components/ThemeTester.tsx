@@ -53,12 +53,14 @@ export default function ThemeTester() {
     const root = document.documentElement;
 
     if (preset.name === 'Original') {
+      document.body.classList.remove('theme-active');
       root.style.removeProperty('--theme-bg');
       root.style.removeProperty('--theme-accent');
       root.style.removeProperty('--theme-text');
       root.style.removeProperty('--theme-input-bg');
       root.style.removeProperty('--theme-input-border');
-      document.body.classList.remove('theme-active');
+      document.body.style.backgroundColor = '';
+      document.body.offsetHeight; // force layout recalc
       return;
     }
 
