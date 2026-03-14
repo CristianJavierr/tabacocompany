@@ -38,6 +38,15 @@ const presets = [
     dark: false,
   },
   {
+    name: 'Celeste & Azul',
+    bg: '#e6f0f8',
+    accent: '#2a6cb6',
+    text: '#1c2a3a',
+    inputBg: '#dce9f3',
+    inputBorder: '#2a6cb6',
+    dark: false,
+  },
+  {
     name: 'Original',
     bg: '',
     accent: '',
