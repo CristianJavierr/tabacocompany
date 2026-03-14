@@ -8,12 +8,12 @@ export default function Collection() {
         <div className="slider-wrapp">
           <div className="slider-img">
             <img className="slider-img-light" src="/images/image3.png" alt="" loading="eager" decoding="async" fetchPriority="high" />
-            <img className="slider-img-dark" src="/images/a.jpg" alt="" loading="eager" decoding="async" />
+            <img className="slider-img-dark" src="/images/b.jpg" alt="" loading="eager" decoding="async" />
             <div className="slider-gradient"></div>
           </div>
           <div className="slider-img active">
             <img className="slider-img-light" src="/images/ia.png" alt="" loading="eager" decoding="async" fetchPriority="high" />
-            <img className="slider-img-dark" src="/images/b.jpg" alt="" loading="eager" decoding="async" />
+            <img className="slider-img-dark" src="/images/a.jpg" alt="" loading="eager" decoding="async" />
             <div className="slider-gradient"></div>
           </div>
         </div>
