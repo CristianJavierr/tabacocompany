@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 const presets = [
   {
     name: 'Verde & Dorado',
-    bg: '#1a2e1a',
+    bg: '#122613',
     accent: '#c8a84e',
     text: '#f5f0e8',
-    inputBg: '#243524',
+    inputBg: '#1a3319',
     inputBorder: '#c8a84e',
   },
   {
@@ -45,6 +45,7 @@ const presets = [
 
 export default function ThemeTester() {
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [active, setActive] = useState('Original');
 
   function applyTheme(preset: typeof presets[0]) {
@@ -69,6 +70,14 @@ export default function ThemeTester() {
     document.body.classList.add('theme-active');
   }
 
+  function handleHide() {
+    applyTheme(presets.find(p => p.name === 'Original')!);
+    setOpen(false);
+    setHidden(true);
+  }
+
+  if (hidden) return null;
+
   return (
     <div className={`theme-tester ${open ? 'theme-tester--open' : ''}`}>
       <button className="theme-tester__toggle" onClick={() => setOpen(!open)}>
@@ -76,7 +85,10 @@ export default function ThemeTester() {
       </button>
       {open && (
         <div className="theme-tester__panel">
-          <p className="theme-tester__title">Probar Colores</p>
+          <div className="theme-tester__header">
+            <p className="theme-tester__title">Probar Colores</p>
+            <button className="theme-tester__close" onClick={handleHide}>✕</button>
+          </div>
           {presets.map((p) => (
             <button
               key={p.name}
