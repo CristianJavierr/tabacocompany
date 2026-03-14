@@ -362,7 +362,7 @@ export default function App() {
         gsap.set('.exp-header--2 .exp-header__label', { color: 'var(--dark)', opacity: 0.6 });
         gsap.set('.exp-header--2 .exp-header__descr', { color: 'var(--dark)', opacity: 0.7 });
         gsap.set('.experience-frame', { clearProps: 'top,left,width,height' });
-        gsap.set('.experience-img', { scale: 1.2, x: 0 });
+        gsap.set('.experience-img', { scale: 1.2 });
         gsap.set('.footer-reveal', { y: '100%', opacity: 0 });
         gsap.set('.footer-line-anim', { scaleX: 0 });
 
@@ -876,25 +876,11 @@ export default function App() {
           ease: 'power2.inOut',
         }, 0);
 
-        function getExperiencePanDistance() {
-          const img = document.querySelector('.experience-img') as HTMLImageElement;
-          if (!img || !img.naturalWidth) return 0;
-          const finalImgW = (window.innerHeight * img.naturalWidth) / img.naturalHeight;
-          return -(finalImgW - window.innerWidth);
-        }
-
         experienceTl.to('.experience-img', {
           scale: 1,
-          x: () => getExperiencePanDistance() * 0.15,
           duration: 1,
           ease: 'power2.inOut',
         }, 0);
-
-        experienceTl.to('.experience-img', {
-          x: () => getExperiencePanDistance(),
-          duration: 1.2,
-          ease: 'none',
-        });
       } else {
         // Mobile: scroll-driven zoom without pinning
         const mobileExpTl = gsap.timeline({
@@ -987,7 +973,6 @@ export default function App() {
   return (
     <PageContext.Provider value={{ currentPage, navigateTo, isTransitioning }}>
       <div ref={mainRef}>
-        <div className="theme-bg-layer" id="theme-bg-layer"></div>
         <div className="page-intro"></div>
         <div className="page-transition"></div>
         <Preloader />

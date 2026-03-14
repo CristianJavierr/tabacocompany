@@ -92,8 +92,7 @@ body.page-home {
   .experience {
     height: auto;
     min-height: 60vh;
-    overflow-x: hidden;
-    overflow-y: visible;
+    overflow: visible;
     padding: 30px 0;
   }
 
@@ -205,8 +204,6 @@ textarea {
   box-shadow: inset 0 0 0 150px rgba(255, 255, 255, 0) !important;
   -webkit-box-shadow: inset 0 0 0 150px rgba(255, 255, 255, 0) !important;
   -webkit-text-fill-color: currentColor !important;
-  font-size: 1rem;
-  line-height: 1.5rem;
   background-color: transparent;
 }
 
@@ -628,7 +625,7 @@ body.page-contacto-scrolled .header-tagline {
   opacity: 0;
   clip-path: polygon(0% 0%, 6.25% 0%, 6.25% 100%, 6.25% 100%, 6.25% 100%, 6.25% 0%, 12.5% 0%, 12.5% 100%, 12.5% 100%, 12.5% 0%, 18.75% 0%, 18.75% 100%, 18.75% 100%, 18.75% 0%, 25% 0%, 25% 100%, 25% 100%, 25% 0%, 31.25% 0%, 31.25% 100%, 31.25% 100%, 31.25% 0%, 37.5% 0%, 37.5% 100%, 37.5% 100%, 37.5% 0%, 43.75% 0%, 43.75% 100%, 43.75% 100%, 43.75% 0%, 50% 0%, 50% 100%, 50% 100%, 50% 0%, 56.25% 0%, 56.25% 100%, 56.25% 100%, 56.25% 0%, 62.5% 0%, 62.5% 100%, 62.5% 100%, 62.5% 0%, 68.75% 0%, 68.75% 100%, 68.75% 100%, 68.75% 0%, 75% 0%, 75% 100%, 75% 100%, 75% 0%, 81.25% 0%, 81.25% 100%, 81.25% 100%, 81.25% 0%, 87.5% 0%, 87.5% 100%, 87.5% 100%, 87.5% 0%, 93.75% 0%, 93.75% 100%, 93.75% 100%, 93.75% 0%, 100% 0%, 100% 100%, 0% 100%);
   transform: scale(1.1) translateX(-4%);
-  transition: 1.5s;
+  transition: clip-path 1.5s, transform 1.5s, opacity 1.5s;
 }
 
 .slider-img.active {
@@ -1872,7 +1869,7 @@ body.page-contacto-scrolled .header-tagline {
 .contacto-form__title {
   font-family: var(--font-serif);
   font-weight: 300;
-  font-size: 0.16rem;
+  font-size: 0.22rem;
   text-transform: uppercase;
   color: var(--dark);
   margin: 0 0 0.05rem;
@@ -1891,7 +1888,7 @@ body.page-contacto-scrolled .header-tagline {
 }
 
 .contacto-form__label {
-  font-size: 0.06rem;
+  font-size: 0.07rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--dark);
@@ -1901,12 +1898,12 @@ body.page-contacto-scrolled .header-tagline {
 .contacto-form__input,
 .contacto-form__textarea {
   width: 100%;
-  padding: 0.05rem 0;
+  padding: 10px 0;
   background: transparent;
   border: none;
   border-bottom: 1px solid rgba(19, 19, 19, 0.15);
   font-family: var(--main-font);
-  font-size: 0.08rem;
+  font-size: 15px;
   color: var(--dark);
   outline: none;
   transition: border-color 0.3s ease;
@@ -1919,7 +1916,7 @@ body.page-contacto-scrolled .header-tagline {
 
 .contacto-form__textarea {
   resize: vertical;
-  min-height: 0.35rem;
+  min-height: 0.5rem;
   line-height: 1.5;
 }
 
@@ -1983,18 +1980,6 @@ body.page-contacto-scrolled .header-tagline {
 
 /* ===== THEME TESTER (Global) ===== */
 
-.theme-bg-layer {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-}
-
-.theme-active .theme-bg-layer {
-  display: block;
-  background: var(--beige);
-}
 
 .theme-dark .banner,
 .theme-dark .shop,
@@ -2008,13 +1993,11 @@ body.page-contacto-scrolled .header-tagline {
 }
 
 /* ---- Header / Nav ---- */
-.theme-active .header,
-.theme-active .header-link,
-.theme-active .header-logo,
-.theme-active .header-tagline,
+/* GSAP animates header color with var(--dark) which already points to
+   the theme color — no !important needed, avoids per-frame conflicts */
 .theme-active .header a,
 .theme-active .header span {
-  color: var(--theme-text) !important;
+  color: var(--dark);
 }
 
 /* ---- Banner ---- */
@@ -2024,9 +2007,7 @@ body.page-contacto-scrolled .header-tagline {
 
 .theme-active .banner-mask,
 .theme-active .collection-mask {
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
+  background: transparent !important;
 }
 
 .theme-active .banner-text,
@@ -2163,12 +2144,6 @@ body.page-contacto-scrolled .header-tagline {
   background: var(--theme-bg) !important;
 }
 
-.theme-active .exp-header__title,
-.theme-active .exp-header__title span,
-.theme-active .exp-header__label,
-.theme-active .exp-header__label span,
-.theme-active .exp-header__descr,
-.theme-active .exp-header__descr span,
 .theme-active .exp-reveal,
 .theme-active .exp-title-slide,
 .theme-active .exp-title-slide-right {
@@ -2266,6 +2241,58 @@ body.page-contacto-scrolled .header-tagline {
 }
 
 .theme-active .contacto-form__submit {
+  background: var(--theme-accent) !important;
+  color: var(--theme-bg) !important;
+  border-color: var(--theme-accent) !important;
+}
+
+/* ---- Cart ---- */
+.theme-active .cart-panel {
+  background: var(--theme-bg) !important;
+}
+
+.theme-active .cart-panel__header {
+  border-color: color-mix(in srgb, var(--theme-text) 15%, transparent) !important;
+}
+
+.theme-active .cart-panel__title,
+.theme-active .cart-item__name,
+.theme-active .cart-item__price,
+.theme-active .cart-item__qty-val,
+.theme-active .cart-empty p {
+  color: var(--theme-text) !important;
+}
+
+.theme-active .cart-item__category,
+.theme-active .cart-item__remove,
+.theme-active .cart-empty span {
+  color: var(--theme-text) !important;
+  opacity: 0.5;
+}
+
+.theme-active .cart-panel__close {
+  color: var(--theme-text) !important;
+}
+
+.theme-active .cart-item {
+  border-color: color-mix(in srgb, var(--theme-text) 10%, transparent) !important;
+}
+
+.theme-active .cart-item__qty-btn {
+  color: var(--theme-text) !important;
+  border-color: color-mix(in srgb, var(--theme-text) 15%, transparent) !important;
+}
+
+.theme-active .cart-panel__footer {
+  border-color: color-mix(in srgb, var(--theme-text) 15%, transparent) !important;
+}
+
+.theme-active .cart-panel__total,
+.theme-active .cart-panel__total-price {
+  color: var(--theme-text) !important;
+}
+
+.theme-active .cart-panel__checkout {
   background: var(--theme-accent) !important;
   color: var(--theme-bg) !important;
   border-color: var(--theme-accent) !important;
@@ -2643,8 +2670,7 @@ body.page-contacto-scrolled .header-tagline {
   .experience {
     height: auto;
     min-height: 60vh;
-    overflow-x: hidden;
-    overflow-y: visible;
+    overflow: visible;
     padding: 30px 0;
   }
 

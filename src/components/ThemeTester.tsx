@@ -83,6 +83,7 @@ export default function ThemeTester() {
       root.style.removeProperty('--theme-bg');
       root.style.removeProperty('--theme-input-bg');
       root.style.removeProperty('--theme-input-border');
+      root.style.background = '';
       document.body.style.background = '#FFFAF6';
       return;
     }
@@ -95,6 +96,7 @@ export default function ThemeTester() {
     root.style.setProperty('--theme-input-bg', preset.inputBg);
     root.style.setProperty('--theme-input-border', preset.inputBorder);
     root.classList.add('theme-active');
+    root.style.background = preset.bg;
     document.body.style.background = preset.bg;
 
     if (preset.dark) {
