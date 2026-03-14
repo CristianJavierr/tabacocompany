@@ -1979,14 +1979,6 @@ body.page-contacto-scrolled .header-tagline {
   background: var(--beige);
 }
 
-.theme-dark .theme-bg-layer {
-  background:
-    radial-gradient(ellipse at 15% 30%, rgba(255,255,255,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 70%, rgba(255,255,255,0.03) 0%, transparent 40%),
-    url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E"),
-    var(--beige);
-}
-
 .theme-dark .banner,
 .theme-dark .shop,
 .theme-dark .submarcas,
@@ -1995,7 +1987,9 @@ body.page-contacto-scrolled .header-tagline {
 .theme-dark .experience,
 .theme-dark .site-footer,
 .theme-dark .contacto {
-  background: transparent !important;
+  background:
+    url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E"),
+    var(--beige) !important;
 }
 
 /* ---- Header / Nav ---- */
