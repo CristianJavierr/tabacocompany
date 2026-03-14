@@ -1974,7 +1974,6 @@ body.theme-active {
     url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
   background-color: var(--theme-bg) !important;
   color: var(--theme-text) !important;
-  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* ---- Header / Nav ---- */
@@ -2012,6 +2011,10 @@ body.theme-active .title-chunk-italic span {
 
 /* ---- Collection / Slider ---- */
 body.theme-active .collection {
+  background: var(--theme-bg) !important;
+}
+
+body.theme-active .slider {
   background: var(--theme-bg);
 }
 
@@ -2023,6 +2026,23 @@ body.theme-active .slider-numeric__item,
 body.theme-active .slider-numeric__active,
 body.theme-active .slider-numeric__total {
   color: var(--theme-text) !important;
+}
+
+body.theme-active .slider-img,
+body.theme-active .slider-img img {
+  transition: none !important;
+}
+
+body.theme-active .collection-mask {
+  background: var(--theme-bg) !important;
+}
+
+body.theme-active .banner-mask {
+  background: var(--theme-bg) !important;
+}
+
+body.theme-active .slider-gradient {
+  background: linear-gradient(to top, var(--theme-bg), transparent) !important;
 }
 
 /* ---- Shop ---- */
