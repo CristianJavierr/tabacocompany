@@ -29,12 +29,12 @@ const presets = [
     dark: false,
   },
   {
-    name: 'Lavanda & Morado',
-    bg: '#eee8f0',
-    accent: '#6b3fa0',
-    text: '#2e2838',
-    inputBg: '#e6dde9',
-    inputBorder: '#6b3fa0',
+    name: 'Beige & Naranja',
+    bg: '#f5ede3',
+    accent: '#d4722a',
+    text: '#3a2e24',
+    inputBg: '#efe5d8',
+    inputBorder: '#d4722a',
     dark: false,
   },
   {
