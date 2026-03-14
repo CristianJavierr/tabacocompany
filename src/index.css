@@ -2032,7 +2032,10 @@ body.page-contacto-scrolled .header-tagline {
 
 .theme-active .slider-descr,
 .theme-active .slider-title,
-.theme-active .slider-title__item,
+.theme-active .slider-title__item {
+  color: var(--theme-accent) !important;
+}
+
 .theme-active .slider-numeric,
 .theme-active .slider-numeric__item,
 .theme-active .slider-numeric__active,
