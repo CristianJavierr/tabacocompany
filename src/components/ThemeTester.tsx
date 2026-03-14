@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import gsap from 'gsap';
+
+const DEFAULTS = { bg: '#FFFAF6', text: '#131313' };
 
 const presets = [
   {
@@ -70,35 +73,38 @@ export default function ThemeTester() {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [active, setActive] = useState('Original');
+
   function applyTheme(preset: typeof presets[0]) {
     setActive(preset.name);
     const root = document.documentElement;
 
     if (preset.name === 'Original') {
       root.classList.remove('theme-active', 'theme-dark');
-      root.style.removeProperty('--beige');
-      root.style.removeProperty('--dark');
-      root.style.removeProperty('--theme-accent');
-      root.style.removeProperty('--theme-text');
-      root.style.removeProperty('--theme-bg');
-      root.style.removeProperty('--theme-input-bg');
-      root.style.removeProperty('--theme-input-border');
-      root.style.background = '';
-      document.body.style.background = '#FFFAF6';
+      gsap.set(root, {
+        '--beige': DEFAULTS.bg,
+        '--dark': DEFAULTS.text,
+        '--theme-accent': '',
+        '--theme-input-bg': '',
+        '--theme-input-border': '',
+        background: '',
+      });
+      gsap.set(document.body, { background: DEFAULTS.bg });
+      gsap.set('.banner-mask, .collection-mask', { clearProps: 'background' });
       return;
     }
 
-    root.style.setProperty('--beige', preset.bg);
-    root.style.setProperty('--dark', preset.text);
-    root.style.setProperty('--theme-accent', preset.accent);
-    root.style.setProperty('--theme-text', preset.text);
-    root.style.setProperty('--theme-bg', preset.bg);
-    root.style.setProperty('--theme-input-bg', preset.inputBg);
-    root.style.setProperty('--theme-input-border', preset.inputBorder);
-    root.classList.add('theme-active');
-    root.style.background = preset.bg;
-    document.body.style.background = preset.bg;
+    gsap.set(root, {
+      '--beige': preset.bg,
+      '--dark': preset.text,
+      '--theme-accent': preset.accent,
+      '--theme-input-bg': preset.inputBg,
+      '--theme-input-border': preset.inputBorder,
+      background: preset.bg,
+    });
+    gsap.set(document.body, { background: preset.bg });
+    gsap.set('.banner-mask, .collection-mask', { background: 'transparent' });
 
+    root.classList.add('theme-active');
     if (preset.dark) {
       root.classList.add('theme-dark');
     } else {

@@ -1983,12 +1983,6 @@ body.page-contacto-scrolled .header-tagline {
    Only override what can't be handled by variable propagation.
    NEVER use !important on properties GSAP animates (opacity, visibility, color on header). */
 
-/* Masks: make transparent so GSAP animates freely with no visual effect */
-.theme-active .banner-mask,
-.theme-active .collection-mask {
-  background: transparent !important;
-}
-
 /* Slider text: forced white (dark images behind) */
 .theme-active .slider-descr,
 .theme-active .slider-title__item,
