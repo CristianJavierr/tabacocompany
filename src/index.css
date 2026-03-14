@@ -645,9 +645,6 @@ body.page-contacto-scrolled .header-tagline {
 }
 
 .slider-img img {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -655,21 +652,6 @@ body.page-contacto-scrolled .header-tagline {
   will-change: transform;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-}
-
-.slider-img-dark {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.theme-dark .slider-img-dark {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.theme-dark .slider-img-light {
-  opacity: 0;
-  pointer-events: none;
 }
 
 .slider-descr {
