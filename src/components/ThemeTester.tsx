@@ -1,4 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+
+const ORIGINAL_IMAGES = [
+  { src: '/images/image3.png', slide: 0 },
+  { src: '/images/ia.png', slide: 1 },
+];
+
+const DARK_IMAGES = [
+  { src: '/images/verde1.png', slide: 0 },
+  { src: '/images/verde2.png', slide: 1 },
+];
 
 const presets = [
   {
@@ -7,6 +17,15 @@ const presets = [
     accent: '#c8a84e',
     text: '#f5f0e8',
     inputBg: '#1a3319',
+    inputBorder: '#c8a84e',
+    dark: true,
+  },
+  {
+    name: 'Negro & Dorado',
+    bg: '#111111',
+    accent: '#c8a84e',
+    text: '#f5f0e8',
+    inputBg: '#1a1a1a',
     inputBorder: '#c8a84e',
     dark: true,
   },
@@ -57,6 +76,15 @@ const presets = [
   },
 ];
 
+function swapSliderImages(images: typeof ORIGINAL_IMAGES) {
+  const sliderImgs = document.querySelectorAll('.slider-img img');
+  sliderImgs.forEach((el, i) => {
+    if (images[i]) {
+      (el as HTMLImageElement).src = images[i].src;
+    }
+  });
+}
+
 export default function ThemeTester() {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -75,6 +103,7 @@ export default function ThemeTester() {
       root.style.removeProperty('--theme-bg');
       root.style.removeProperty('--theme-input-bg');
       root.style.removeProperty('--theme-input-border');
+      swapSliderImages(ORIGINAL_IMAGES);
       return;
     }
 
@@ -86,10 +115,13 @@ export default function ThemeTester() {
     root.style.setProperty('--theme-input-bg', preset.inputBg);
     root.style.setProperty('--theme-input-border', preset.inputBorder);
     root.classList.add('theme-active');
+
     if (preset.dark) {
       root.classList.add('theme-dark');
+      swapSliderImages(DARK_IMAGES);
     } else {
       root.classList.remove('theme-dark');
+      swapSliderImages(ORIGINAL_IMAGES);
     }
   }
 
