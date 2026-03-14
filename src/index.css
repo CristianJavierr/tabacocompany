@@ -92,8 +92,8 @@ body.page-home {
   .experience {
     height: auto;
     min-height: 60vh;
-    overflow: visible;
     overflow-x: hidden;
+    overflow-y: visible;
     padding: 30px 0;
   }
 
@@ -1866,22 +1866,22 @@ body.page-contacto-scrolled .header-tagline {
 .contacto-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0.15rem;
 }
 
 .contacto-form__title {
   font-family: var(--font-serif);
   font-weight: 300;
-  font-size: 22px;
+  font-size: 0.16rem;
   text-transform: uppercase;
   color: var(--dark);
-  margin: 0 0 8px;
+  margin: 0 0 0.05rem;
 }
 
 .contacto-form__row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 0.15rem;
 }
 
 .contacto-form__group {
@@ -1891,7 +1891,7 @@ body.page-contacto-scrolled .header-tagline {
 }
 
 .contacto-form__label {
-  font-size: 11px;
+  font-size: 0.06rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--dark);
@@ -1901,12 +1901,12 @@ body.page-contacto-scrolled .header-tagline {
 .contacto-form__input,
 .contacto-form__textarea {
   width: 100%;
-  padding: 0.04rem 0;
+  padding: 0.05rem 0;
   background: transparent;
   border: none;
   border-bottom: 1px solid rgba(19, 19, 19, 0.15);
   font-family: var(--main-font);
-  font-size: 14px;
+  font-size: 0.08rem;
   color: var(--dark);
   outline: none;
   transition: border-color 0.3s ease;
@@ -1919,7 +1919,7 @@ body.page-contacto-scrolled .header-tagline {
 
 .contacto-form__textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 0.35rem;
   line-height: 1.5;
 }
 
@@ -2643,8 +2643,8 @@ body.page-contacto-scrolled .header-tagline {
   .experience {
     height: auto;
     min-height: 60vh;
-    overflow: visible;
     overflow-x: hidden;
+    overflow-y: visible;
     padding: 30px 0;
   }
 
