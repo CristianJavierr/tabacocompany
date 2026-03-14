@@ -2019,14 +2019,6 @@ body.theme-active .title-chunk-italic span {
 }
 
 /* ---- Collection / Slider ---- */
-body.theme-active .collection {
-  background: var(--theme-bg);
-}
-
-body.theme-active .slider {
-  background: var(--theme-bg);
-}
-
 body.theme-active .slider-descr,
 body.theme-active .slider-title,
 body.theme-active .slider-title__item,
