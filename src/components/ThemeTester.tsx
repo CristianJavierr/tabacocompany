@@ -1,7 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-
-const ORIGINAL_SRCS = ['/images/image3.png', '/images/ia.png'];
-const DARK_SRCS = ['/images/b.jpg', '/images/a.jpg'];
+import React, { useState } from 'react';
 
 const presets = [
   {
@@ -73,24 +70,6 @@ export default function ThemeTester() {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [active, setActive] = useState('Original');
-  const preloaded = useRef(false);
-
-  useEffect(() => {
-    if (preloaded.current) return;
-    preloaded.current = true;
-    DARK_SRCS.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, []);
-
-  function swapSliderImages(srcs: string[]) {
-    const imgs = document.querySelectorAll('.slider-img img');
-    imgs.forEach((el, i) => {
-      if (srcs[i]) (el as HTMLImageElement).src = srcs[i];
-    });
-  }
-
   function applyTheme(preset: typeof presets[0]) {
     setActive(preset.name);
     const root = document.documentElement;
@@ -104,7 +83,7 @@ export default function ThemeTester() {
       root.style.removeProperty('--theme-bg');
       root.style.removeProperty('--theme-input-bg');
       root.style.removeProperty('--theme-input-border');
-      swapSliderImages(ORIGINAL_SRCS);
+      document.body.style.background = '#FFFAF6';
       return;
     }
 
@@ -116,13 +95,12 @@ export default function ThemeTester() {
     root.style.setProperty('--theme-input-bg', preset.inputBg);
     root.style.setProperty('--theme-input-border', preset.inputBorder);
     root.classList.add('theme-active');
+    document.body.style.background = preset.bg;
 
     if (preset.dark) {
       root.classList.add('theme-dark');
-      swapSliderImages(DARK_SRCS);
     } else {
       root.classList.remove('theme-dark');
-      swapSliderImages(ORIGINAL_SRCS);
     }
   }
 

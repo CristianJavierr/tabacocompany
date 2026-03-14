@@ -654,6 +654,23 @@ body.page-contacto-scrolled .header-tagline {
   backface-visibility: hidden;
 }
 
+.theme-dark .slider-img {
+  background-size: cover;
+  background-position: center;
+}
+
+.theme-dark .slider-img:first-child {
+  background-image: url('/images/b.jpg');
+}
+
+.theme-dark .slider-img:last-child {
+  background-image: url('/images/a.jpg');
+}
+
+.theme-dark .slider-img img {
+  visibility: hidden;
+}
+
 .slider-descr {
   position: absolute;
   left: 0.4rem;
