@@ -1968,6 +1968,15 @@ body.page-contacto-scrolled .header-tagline {
 
 .theme-bg-layer {
   display: none;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.theme-active .theme-bg-layer {
+  display: block;
+  background: var(--beige);
 }
 
 /* ---- Header / Nav ---- */
