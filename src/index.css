@@ -1979,6 +1979,14 @@ body.page-contacto-scrolled .header-tagline {
   background: var(--beige);
 }
 
+.theme-dark .theme-bg-layer {
+  background:
+    radial-gradient(ellipse at 15% 30%, rgba(255,255,255,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 70%, rgba(255,255,255,0.03) 0%, transparent 40%),
+    url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"),
+    var(--beige);
+}
+
 /* ---- Header / Nav ---- */
 .theme-active .header,
 .theme-active .header-link,
@@ -2094,7 +2102,7 @@ body.page-contacto-scrolled .header-tagline {
 }
 
 .theme-active .marcas-list__item {
-  border-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: color-mix(in srgb, var(--dark) 15%, transparent) !important;
 }
 
 .theme-active .marcas-list__name {

@@ -8,30 +8,34 @@ const presets = [
     text: '#f5f0e8',
     inputBg: '#1a3319',
     inputBorder: '#c8a84e',
+    dark: true,
   },
   {
-    name: 'Negro & Oro',
-    bg: '#111111',
-    accent: '#d4a843',
-    text: '#f5f0e8',
-    inputBg: '#1a1a1a',
-    inputBorder: '#d4a843',
+    name: 'Crema & Terracota',
+    bg: '#f4ece1',
+    accent: '#b5654a',
+    text: '#3a2e28',
+    inputBg: '#efe5d8',
+    inputBorder: '#b5654a',
+    dark: false,
   },
   {
-    name: 'Borgoña & Crema',
-    bg: '#2e1118',
-    accent: '#d4a25c',
-    text: '#f5ece3',
-    inputBg: '#3a1a22',
-    inputBorder: '#d4a25c',
+    name: 'Rosa & Oliva',
+    bg: '#f5e8e4',
+    accent: '#5e6b4a',
+    text: '#2d2926',
+    inputBg: '#f0ddd7',
+    inputBorder: '#5e6b4a',
+    dark: false,
   },
   {
-    name: 'Azul Noche & Plata',
-    bg: '#0f1a2e',
-    accent: '#c0c0c0',
-    text: '#e8edf5',
-    inputBg: '#162240',
-    inputBorder: '#c0c0c0',
+    name: 'Lavanda & Dorado',
+    bg: '#eee8f0',
+    accent: '#9b7a3c',
+    text: '#2e2838',
+    inputBg: '#e6dde9',
+    inputBorder: '#9b7a3c',
+    dark: false,
   },
   {
     name: 'Original',
@@ -40,6 +44,7 @@ const presets = [
     text: '',
     inputBg: '',
     inputBorder: '',
+    dark: false,
   },
 ];
 
@@ -53,7 +58,7 @@ export default function ThemeTester() {
     const root = document.documentElement;
 
     if (preset.name === 'Original') {
-      root.classList.remove('theme-active');
+      root.classList.remove('theme-active', 'theme-dark');
       root.style.removeProperty('--beige');
       root.style.removeProperty('--dark');
       root.style.removeProperty('--theme-accent');
@@ -72,6 +77,11 @@ export default function ThemeTester() {
     root.style.setProperty('--theme-input-bg', preset.inputBg);
     root.style.setProperty('--theme-input-border', preset.inputBorder);
     root.classList.add('theme-active');
+    if (preset.dark) {
+      root.classList.add('theme-dark');
+    } else {
+      root.classList.remove('theme-dark');
+    }
   }
 
   function handleHide() {
