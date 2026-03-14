@@ -76,7 +76,17 @@ const presets = [
   },
 ];
 
-function swapSliderImages(images: typeof ORIGINAL_IMAGES) {
+function preloadImage(src: string): Promise<void> {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve();
+    img.onerror = () => resolve();
+    img.src = src;
+  });
+}
+
+async function swapSliderImages(images: typeof ORIGINAL_IMAGES) {
+  await Promise.all(images.map(img => preloadImage(img.src)));
   const sliderImgs = document.querySelectorAll('.slider-img img');
   sliderImgs.forEach((el, i) => {
     if (images[i]) {
