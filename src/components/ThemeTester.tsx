@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import gsap from 'gsap';
-
-const DEFAULTS = { bg: '#FFFAF6', text: '#131313' };
 
 const presets = [
   {
@@ -69,53 +66,31 @@ const presets = [
   },
 ];
 
+function getSavedTheme(): string {
+  try {
+    const saved = localStorage.getItem('theme');
+    if (saved) return JSON.parse(saved).name || 'Original';
+  } catch {}
+  return 'Original';
+}
+
 export default function ThemeTester() {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [active, setActive] = useState('Original');
+  const [active, setActive] = useState(getSavedTheme);
 
   function applyTheme(preset: typeof presets[0]) {
-    setActive(preset.name);
-    const root = document.documentElement;
-
     if (preset.name === 'Original') {
-      root.classList.remove('theme-active', 'theme-dark');
-      gsap.set(root, {
-        '--beige': DEFAULTS.bg,
-        '--dark': DEFAULTS.text,
-        '--theme-accent': '',
-        '--theme-input-bg': '',
-        '--theme-input-border': '',
-        background: '',
-      });
-      gsap.set(document.body, { background: DEFAULTS.bg });
-      gsap.set('.banner-mask, .collection-mask', { clearProps: 'background' });
-      return;
-    }
-
-    gsap.set(root, {
-      '--beige': preset.bg,
-      '--dark': preset.text,
-      '--theme-accent': preset.accent,
-      '--theme-input-bg': preset.inputBg,
-      '--theme-input-border': preset.inputBorder,
-      background: preset.bg,
-    });
-    gsap.set(document.body, { background: preset.bg });
-    gsap.set('.banner-mask, .collection-mask', { background: 'transparent' });
-
-    root.classList.add('theme-active');
-    if (preset.dark) {
-      root.classList.add('theme-dark');
+      localStorage.removeItem('theme');
     } else {
-      root.classList.remove('theme-dark');
+      localStorage.setItem('theme', JSON.stringify(preset));
     }
+    window.location.reload();
   }
 
   function handleHide() {
-    applyTheme(presets.find(p => p.name === 'Original')!);
-    setOpen(false);
-    setHidden(true);
+    localStorage.removeItem('theme');
+    window.location.reload();
   }
 
   if (hidden) return null;

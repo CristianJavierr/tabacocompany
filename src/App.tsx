@@ -340,6 +340,9 @@ export default function App() {
         gsap.set('.slider-img img', { scale: 1.7 });
         gsap.set('.banner-mask', { autoAlpha: 0 });
         gsap.set('.collection-mask', { autoAlpha: 0 });
+        if (document.documentElement.classList.contains('theme-active')) {
+          gsap.set('.banner-mask, .collection-mask', { background: 'transparent' });
+        }
         gsap.set('.shop-reveal', { y: '100%' });
         gsap.set('.shop-title-slide', { x: '-110%' });
         gsap.set('.shop-title-slide-right', { x: '110%' });

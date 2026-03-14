@@ -16,6 +16,25 @@
     <link rel="preload" href="https://fonts.cdnfonts.com/css/reforma-1918" as="style" />
   </head>
   <body>
+    <script>
+      (function(){
+        var t = localStorage.getItem('theme');
+        if (!t) return;
+        try {
+          var p = JSON.parse(t);
+          var r = document.documentElement;
+          r.style.setProperty('--beige', p.bg);
+          r.style.setProperty('--dark', p.text);
+          r.style.setProperty('--theme-accent', p.accent);
+          r.style.setProperty('--theme-input-bg', p.inputBg);
+          r.style.setProperty('--theme-input-border', p.inputBorder);
+          r.style.background = p.bg;
+          document.body.style.background = p.bg;
+          r.classList.add('theme-active');
+          if (p.dark) r.classList.add('theme-dark');
+        } catch(e){}
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
