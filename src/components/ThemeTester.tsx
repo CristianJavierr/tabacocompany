@@ -51,26 +51,27 @@ export default function ThemeTester() {
   function applyTheme(preset: typeof presets[0]) {
     setActive(preset.name);
     const root = document.documentElement;
-    const bgLayer = document.getElementById('theme-bg-layer');
 
     if (preset.name === 'Original') {
       root.classList.remove('theme-active');
-      root.style.removeProperty('--theme-bg');
+      root.style.removeProperty('--beige');
+      root.style.removeProperty('--dark');
       root.style.removeProperty('--theme-accent');
       root.style.removeProperty('--theme-text');
+      root.style.removeProperty('--theme-bg');
       root.style.removeProperty('--theme-input-bg');
       root.style.removeProperty('--theme-input-border');
-      if (bgLayer) bgLayer.style.backgroundColor = '';
       return;
     }
 
-    root.style.setProperty('--theme-bg', preset.bg);
+    root.style.setProperty('--beige', preset.bg);
+    root.style.setProperty('--dark', preset.text);
     root.style.setProperty('--theme-accent', preset.accent);
     root.style.setProperty('--theme-text', preset.text);
+    root.style.setProperty('--theme-bg', preset.bg);
     root.style.setProperty('--theme-input-bg', preset.inputBg);
     root.style.setProperty('--theme-input-border', preset.inputBorder);
     root.classList.add('theme-active');
-    if (bgLayer) bgLayer.style.backgroundColor = preset.bg;
   }
 
   function handleHide() {

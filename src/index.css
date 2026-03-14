@@ -2084,6 +2084,10 @@ body.page-contacto-scrolled .header-tagline {
   background: var(--theme-bg) !important;
 }
 
+.theme-active .marcas-list__item {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
 .theme-active .marcas-list__name {
   color: var(--theme-text) !important;
 }
@@ -2101,18 +2105,18 @@ body.page-contacto-scrolled .header-tagline {
   background: var(--theme-bg) !important;
 }
 
-.theme-active .historia-line {
-  color: transparent !important;
+.theme-active .historia-stroke {
   -webkit-text-stroke-color: var(--theme-text) !important;
+  color: transparent !important;
 }
 
-.theme-active .historia-line.filled {
+.theme-active .historia-fill {
   color: var(--theme-text) !important;
-  -webkit-text-stroke-color: var(--theme-text) !important;
 }
 
 .theme-active .historia-logo {
   color: var(--theme-accent) !important;
+  -webkit-text-stroke-color: var(--theme-accent) !important;
 }
 
 /* ---- Experience ---- */
