@@ -2009,7 +2009,9 @@ body.page-contacto-scrolled .header-tagline {
 
 .theme-active .banner-mask,
 .theme-active .collection-mask {
-  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 .theme-active .banner-text,
