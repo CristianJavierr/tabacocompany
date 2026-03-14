@@ -51,16 +51,16 @@ export default function ThemeTester() {
   function applyTheme(preset: typeof presets[0]) {
     setActive(preset.name);
     const root = document.documentElement;
+    const bgLayer = document.getElementById('theme-bg-layer');
 
     if (preset.name === 'Original') {
-      document.body.classList.remove('theme-active');
+      root.classList.remove('theme-active');
       root.style.removeProperty('--theme-bg');
       root.style.removeProperty('--theme-accent');
       root.style.removeProperty('--theme-text');
       root.style.removeProperty('--theme-input-bg');
       root.style.removeProperty('--theme-input-border');
-      document.body.style.backgroundColor = '';
-      document.body.offsetHeight; // force layout recalc
+      if (bgLayer) bgLayer.style.backgroundColor = '';
       return;
     }
 
@@ -69,7 +69,8 @@ export default function ThemeTester() {
     root.style.setProperty('--theme-text', preset.text);
     root.style.setProperty('--theme-input-bg', preset.inputBg);
     root.style.setProperty('--theme-input-border', preset.inputBorder);
-    document.body.classList.add('theme-active');
+    root.classList.add('theme-active');
+    if (bgLayer) bgLayer.style.backgroundColor = preset.bg;
   }
 
   function handleHide() {

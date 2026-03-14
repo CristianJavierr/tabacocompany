@@ -987,6 +987,7 @@ export default function App() {
   return (
     <PageContext.Provider value={{ currentPage, navigateTo, isTransitioning }}>
       <div ref={mainRef}>
+        <div className="theme-bg-layer" id="theme-bg-layer"></div>
         <div className="page-intro"></div>
         <div className="page-transition"></div>
         <Preloader />
