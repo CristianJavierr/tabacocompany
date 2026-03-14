@@ -2,11 +2,11 @@ import React, { useState, useRef } from 'react';
 
 const ORIGINAL_IMAGES = [
   { src: '/images/image3.png', slide: 0 },
-  { src: '/images/ia.png', slide: 1 },
+  { src: '/images/a.jpg', slide: 1 },
 ];
 
 const DARK_IMAGES = [
-  { src: '/images/verde1.jpg', slide: 0 },
+  { src: '/images/a.jpg', slide: 0 },
   { src: '/images/verde2.png', slide: 1 },
 ];
 
