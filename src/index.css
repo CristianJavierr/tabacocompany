@@ -1967,11 +1967,7 @@ body.page-contacto-scrolled .header-tagline {
 /* ===== THEME TESTER (Global) ===== */
 
 .theme-bg-layer {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-color: transparent;
+  display: none;
 }
 
 /* ---- Header / Nav ---- */
@@ -1986,7 +1982,7 @@ body.page-contacto-scrolled .header-tagline {
 
 /* ---- Banner ---- */
 .theme-active .banner {
-  background: transparent !important;
+  background: var(--theme-bg) !important;
 }
 
 .theme-active .banner-text,
@@ -2008,6 +2004,10 @@ body.page-contacto-scrolled .header-tagline {
 }
 
 /* ---- Collection / Slider ---- */
+.theme-active .collection {
+  background: var(--theme-bg) !important;
+}
+
 .theme-active .slider-descr,
 .theme-active .slider-title,
 .theme-active .slider-title__item,
@@ -2020,7 +2020,7 @@ body.page-contacto-scrolled .header-tagline {
 
 /* ---- Shop ---- */
 .theme-active .shop {
-  background: transparent !important;
+  background: var(--theme-bg) !important;
 }
 
 .theme-active .shop-header__title,
@@ -2060,7 +2060,7 @@ body.page-contacto-scrolled .header-tagline {
 
 /* ---- Submarcas ---- */
 .theme-active .submarcas {
-  background: transparent !important;
+  background: var(--theme-bg) !important;
 }
 
 .theme-active .submarcas-title,
@@ -2076,7 +2076,7 @@ body.page-contacto-scrolled .header-tagline {
 
 /* ---- Marcas List ---- */
 .theme-active .marcas-list {
-  background: transparent !important;
+  background: var(--theme-bg) !important;
 }
 
 .theme-active .marcas-list__name {
@@ -2093,7 +2093,7 @@ body.page-contacto-scrolled .header-tagline {
 
 /* ---- Historia ---- */
 .theme-active .historia {
-  background: transparent !important;
+  background: var(--theme-bg) !important;
 }
 
 .theme-active .historia-line {
@@ -2112,7 +2112,7 @@ body.page-contacto-scrolled .header-tagline {
 
 /* ---- Experience ---- */
 .theme-active .experience {
-  background: transparent !important;
+  background: var(--theme-bg) !important;
 }
 
 .theme-active .exp-header__title,
@@ -2133,7 +2133,7 @@ body.page-contacto-scrolled .header-tagline {
 
 /* ---- Footer ---- */
 .theme-active .site-footer {
-  background: transparent !important;
+  background: var(--theme-bg) !important;
   color: var(--theme-text) !important;
 }
 
@@ -2160,11 +2160,11 @@ body.page-contacto-scrolled .header-tagline {
 
 /* ---- Contacto ---- */
 .theme-active .contacto {
-  background: transparent !important;
+  background: var(--theme-bg) !important;
 }
 
 .theme-active .contacto-hero {
-  background: transparent !important;
+  background: var(--theme-bg) !important;
 }
 
 .theme-active .contacto-hero__label,
@@ -2182,7 +2182,7 @@ body.page-contacto-scrolled .header-tagline {
 }
 
 .theme-active .contacto-body {
-  background: transparent !important;
+  background: var(--theme-bg) !important;
   color: var(--theme-text) !important;
 }
 
