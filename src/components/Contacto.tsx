@@ -24,7 +24,7 @@ export default function Contacto() {
         </div>
         <div className="contacto-hero__right">
           <div className="contacto-hero__img contacto-reveal-up">
-            <img src="/images/1.jpeg" alt="The Tobacco Collection" loading="lazy" decoding="async" />
+            <img src="/images/b.jpg" alt="The Tobacco Collection" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
