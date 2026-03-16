@@ -17,7 +17,7 @@ import Experience from './components/Experience';
 import Cart from './components/Cart';
 import Footer from './components/Footer';
 import Contacto from './components/Contacto';
-import ThemeTester from './components/ThemeTester';
+
 import { PageContext, type Page } from './context/PageContext';
 
 gsap.registerPlugin(ScrollTrigger, Observer, CustomEase);
@@ -361,8 +361,12 @@ export default function App() {
         gsap.set('.exp-header--2 .exp-header__title', { color: 'var(--dark)' });
         gsap.set('.exp-header--2 .exp-header__label', { color: 'var(--dark)', opacity: 0.6 });
         gsap.set('.exp-header--2 .exp-header__descr', { color: 'var(--dark)', opacity: 0.7 });
-        gsap.set('.experience-frame', { clearProps: 'top,left,width,height' });
-        gsap.set('.experience-img', { scale: 1.2 });
+        gsap.set('.experience-frame', { clearProps: 'all' });
+        if (!isMobile) {
+          gsap.set('.experience-img', { scale: 1.2 });
+        } else {
+          gsap.set('.experience-img', { clearProps: 'all' });
+        }
         gsap.set('.footer-reveal', { y: '100%', opacity: 0 });
         gsap.set('.footer-line-anim', { scaleX: 0 });
 
@@ -802,7 +806,9 @@ export default function App() {
       });
 
       // Experience animation
-      if (!isMobile) {
+      let mm = gsap.matchMedia();
+      
+      mm.add("(min-width: 769px)", () => {
         // Desktop: pinned scroll-driven animation
         const experienceTl = gsap.timeline({
           scrollTrigger: {
@@ -881,56 +887,7 @@ export default function App() {
           duration: 1,
           ease: 'power2.inOut',
         }, 0);
-      } else {
-        // Mobile: scroll-driven zoom without pinning
-        const mobileExpTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: '.experience',
-            start: 'top 80%',
-            end: 'bottom 20%',
-            scrub: 0.3,
-            invalidateOnRefresh: true,
-          }
-        });
-
-        mobileExpTl.fromTo('.experience-frame', {
-          scale: 0.85,
-          opacity: 0.7,
-        }, {
-          scale: 1,
-          opacity: 1,
-          duration: 1,
-          ease: 'power2.out',
-        }, 0);
-
-        mobileExpTl.fromTo('.experience-img', {
-          scale: 1.3,
-        }, {
-          scale: 1,
-          duration: 1,
-          ease: 'power2.out',
-        }, 0);
-
-        mobileExpTl.fromTo('.exp-header--1', {
-          y: 30,
-          opacity: 0,
-        }, {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          ease: 'power2.out',
-        }, 0);
-
-        mobileExpTl.fromTo('.exp-header--2', {
-          y: 30,
-          opacity: 0,
-        }, {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          ease: 'power2.out',
-        }, 0.2);
-      }
+      });
 
       // ========== FOOTER ANIMATIONS ==========
 
@@ -993,7 +950,7 @@ export default function App() {
           </div>
           {currentPage === 'contacto' && <Contacto />}
         </main>
-        <ThemeTester />
+
       </div>
     </PageContext.Provider>
   );
